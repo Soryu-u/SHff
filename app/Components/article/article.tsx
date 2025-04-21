@@ -1,19 +1,33 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useState } from 'react';
 import { View, Text, StyleSheet, Image } from "react-native";
 
-export default function Article() {
-    let liked = true;
+export default function Article({content}:any) {
+    let [liked , setLiked] = useState(false);
+    let [likes, setLike] = useState(content.likes?content.likes:0)
     let color = liked?"red":"black";
+    const press = () => {
+        setLiked(!liked);
+        liked?setLike(likes-1):setLike(likes+1)
+    };
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image style={styles.icon} source={require('../../../assets/images/profilePic.jpeg')} />
-                <Text style={styles.name}>Soryu</Text>
-            </View>
-            <Text style={styles.article}>Article</Text>
-            <View style={styles.footer}>
-                <FontAwesome size={28} name="comments" color={"black"} />
-                <FontAwesome size={28} name="heart" color={color} />
+            <Image style={styles.icon} source={require('../../../assets/images/profilePic.jpeg')} />
+            <View style={{paddingLeft: 20}}>
+                <View style={styles.header}>
+                    <Text style={styles.name}>{content.name}</Text>
+                </View>
+                <Text style={styles.article}>{content.text}</Text>
+                <View style={styles.footer}>
+                    <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                        <FontAwesome size={28} name="comments" color={"black"}/>
+                        <Text style={{paddingLeft: 10}}>{content.comments?content.comments:''}</Text>
+                    </View>
+                    <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                        <FontAwesome size={28} name="heart" color={color} onPress={press}/>
+                        <Text style={{paddingLeft: 10}}>{likes}</Text>
+                    </View>
+                </View>
             </View>
         </View>
     );
@@ -22,7 +36,7 @@ export default function Article() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    justifyContent: 'center',
+    flexDirection: "row",
     padding: 20,
     borderTopColor: "black",
     borderTopWidth: 1,
@@ -39,19 +53,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
-    fontSize: 20,
-    paddingLeft: 20,
+    fontSize: 24,
   },
   article:{
     fontSize: 18,
-    paddingTop: 10,
-    paddingBottom:10,
+    paddingVertical: 10,
   },
   footer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
+    width: "90%",
   },
 });
