@@ -13,20 +13,24 @@ export default function Article({content}:any) {
     return (
         <View style={styles.container}>
             <Image style={styles.icon} source={require('../../../assets/images/profilePic.jpeg')} />
-            <View style={{paddingLeft: 20}}>
+            <View style={{paddingLeft: 20, flex: 1}}>
                 <View style={styles.header}>
                     <Text style={styles.name}>{content.name}</Text>
+                    <Text style={{color:"grey", fontSize: 15, paddingLeft: 5}}>@{content.username}</Text>
                 </View>
-                <Text style={styles.article}>{content.text}</Text>
+                <View style={{}}>
+                  <Text style={styles.article}>{content.text}</Text>
+                  {content.image?<Image style={{maxWidth: "100%", height: 300, borderRadius: 10, marginBottom: 10}} source={content.image}/>:<></>}
+                </View>
                 <View style={styles.footer}>
                     <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <FontAwesome size={28} name="comments" color={"black"}/>
+                        <FontAwesome size={20} name="comments" color={"black"}/>
                         <Text style={{paddingLeft: 10}}>{content.comments?content.comments:''}</Text>
                     </View>
-                    <View style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <FontAwesome size={28} name="heart" color={color} onPress={press}/>
+                    <Text style={{display: "flex", flexDirection: "row", alignItems: "center",}}  onPress={press}>
+                        <FontAwesome size={20} name="heart" color={color}/>
                         <Text style={{paddingLeft: 10}}>{likes}</Text>
-                    </View>
+                    </Text>
                 </View>
             </View>
         </View>
@@ -38,13 +42,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     padding: 20,
-    borderTopColor: "black",
+    borderTopColor: "darkgrey",
     borderTopWidth: 1,
-    
   },
   icon: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 50,
   },
   header: {
@@ -53,17 +56,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
-    fontSize: 24,
+    fontSize: 15,
   },
   article:{
-    fontSize: 18,
+    fontSize: 13,
     paddingVertical: 10,
+    borderRadius: 10,
   },
   footer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "90%",
   },
 });
