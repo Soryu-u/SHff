@@ -1,0 +1,68 @@
+[
+    {
+      "name": "Soryu",
+      "id": 1,
+      "username": "soryu",
+      "userPic": "https://cdn.pixabay.com/photo/2025/03/16/15/04/woman-9474081_1280.jpg",
+      "text": "Hello world",
+      "comments": 0,
+      "likes": 9,
+      "image": "",
+      "time": "2025-04-23T03:51:06.168621Z"
+    },
+    {
+      "name": "Screen",
+      "id": 2,
+      "username": "scree_een",
+      "userPic": "https://cdn.pixabay.com/photo/2024/04/19/12/44/woman-8706275_1280.jpg",
+      "text": "Castle))",
+      "comments": 2,
+      "likes": 84,
+      "image": "https://cdn.pixabay.com/photo/2022/04/12/18/00/europe-7128531_1280.jpg",
+      "time": "2025-04-23T09:39:06.168621Z"
+    },
+    {
+      "name": "Liker",
+      "id": 3,
+      "username": "like_lover",
+      "userPic": "https://cdn.pixabay.com/photo/2025/03/19/19/04/man-9481358_1280.jpg",
+      "text": "Like plz",
+      "comments": 98,
+      "likes": 342,
+      "image": "https://cdn.pixabay.com/photo/2020/04/15/09/32/crane-5045920_1280.jpg",
+      "time": "2025-04-23T08:51:06.168621Z"
+    },
+    {
+      "name": "Tester",
+      "id": 4,
+      "username": "test123",
+      "userPic": "https://cdn.pixabay.com/photo/2020/10/05/10/51/cat-5628953_1280.jpg",
+      "text": "test 123",
+      "comments": 24,
+      "likes": 192,
+      "image": "https://reactjs.org/logo-og.png",
+      "time": "2025-04-22T12:51:06.168621Z"
+    },
+    {
+      "name": "Tabs",
+      "id": 5,
+      "username": "HeLo12_2",
+      "userPic": "https://cdn.pixabay.com/photo/2024/02/17/00/18/cat-8578562_1280.jpg",
+      "text": "+++++",
+      "comments": 1,
+      "likes": 3,
+      "image": "",
+      "time": "2025-04-16T12:51:06.168621Z"
+    },
+    {
+      "name": "Бабайка",
+      "id": 6,
+      "username": "kricha",
+      "userPic": "https://cdn.pixabay.com/photo/2024/09/21/10/53/anime-9063542_1280.png",
+      "text": "Алалвалві лілвіліл ідівулауц уцкщцалв)))))",
+      "comments": 564,
+      "likes": 9212,
+      "image": "https://cdn.pixabay.com/photo/2023/12/06/21/07/photo-8434386_1280.jpg",
+      "time": "2025-04-23T09:51:02.168621Z"
+    }
+  ]
