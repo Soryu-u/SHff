@@ -28,7 +28,7 @@ export default function TabLayout() {
         name="message"
         options={{
           title: "Messages",
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name="inbox" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="envelope" color={color} />,
         }}
       />
     </Tabs>

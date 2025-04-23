@@ -1,5 +1,8 @@
-import { ScrollView, Text, StyleSheet, } from 'react-native';
+import { ScrollView, View, StyleSheet, } from 'react-native';
 import Article from '../Components/article/article';
+import WriteArticle from '../Components/writeArticle/writeArticle';
+import { useRef, useState } from 'react';
+import { useNavigation } from 'expo-router';
 
 export default function Tab() {
   const articles = [
@@ -9,7 +12,8 @@ export default function Tab() {
       text: "Hello world",
       comments: 0,
       likes: 9,
-      image: ''
+      image: '',
+      time: '9 hours'
     },
     {
       name: "Screen",
@@ -17,7 +21,8 @@ export default function Tab() {
       text: "Black screen.",
       comments: 2,
       likes: 84,
-      image: ''
+      image: '',
+      time: '12 minutes'
     },
     {
       name: "Liker",
@@ -25,7 +30,8 @@ export default function Tab() {
       text: "Like plz",
       comments: 98,
       likes: 342,
-      image: require("../../assets/images/user/9pLeFkD.jpeg")
+      image: require("../../assets/images/user/9pLeFkD.jpeg"),
+      time: '1 hour'
     },
     {
       name: "Tester",
@@ -33,7 +39,8 @@ export default function Tab() {
       text: "test 123",
       comments: 24,
       likes: 192,
-      image: require("../../assets/images/user/11.png")
+      image: require("../../assets/images/user/11.png"),
+      time: '1 day'
     },
     {
       name: "Tabs",
@@ -41,7 +48,8 @@ export default function Tab() {
       text: "+++++",
       comments: 1,
       likes: 3,
-      image: ''
+      image: '',
+      time: '1 week'
     },
     {
       name: "Бабайка",
@@ -49,18 +57,55 @@ export default function Tab() {
       text: "Алалвалві лілвіліл ідівулауц уцкщцалв)))))",
       comments: 564,
       likes: 9212,
-      image: require("../../assets/images/user/232.jpg")
+      image: require("../../assets/images/user/232.jpg"),
+      time: '4 seconds'
     },
 
   ]
+
+  const navigation = useNavigation();
+  const lastOffsetY = useRef(0);
+  const [hidden, setHidden] = useState(false);
+
+  const handleScroll = (event: any) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    const diff = offsetY - lastOffsetY.current;
+
+    if (!hidden && diff > 10) {
+      // Прокручено вниз > 100px — ховаємо
+      setHidden(true);
+      navigation.setOptions({
+        // headerShown: false,
+        tabBarStyle: { display: 'none' },
+      });
+    } else if (hidden && diff < 0) {
+      // Прокрутка вгору — показуємо
+      setHidden(false);
+      navigation.setOptions({
+        headerShown: true,
+        tabBarStyle: { display: 'flex' },
+      });
+    }
+
+    lastOffsetY.current = offsetY;
+  };
+  
+
   return (
-    <ScrollView style={styles.container}>
-      {articles.map((article, i)=> {
-        return (
-          <Article key={i} content={article}/>
-        )
-      })}
-    </ScrollView>
+    <View>
+      <ScrollView style={styles.container}
+        scrollEventThrottle={16}
+        onScroll={handleScroll}
+      >
+        {articles.map((article, i)=> {
+          return (
+            <Article key={i} content={article}/>
+          )
+        })}
+      </ScrollView>
+      <WriteArticle scrollDirection={hidden}/>
+    </View>
+
   );
 }
 
